@@ -1,4 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_res_tarjeta_user,res.tarjeta,model_res_tarjeta,account.group_account_manager,1,1,1,1
-access_promotion_card_user,promotion.card,model_promotion_card,account.group_account_manager,1,1,1,1
-access_promotion_card_lines_user,promotion.card.lines,model_promotion_card_lines,account.group_account_manager,1,1,1,1
