@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="promotion_card_view_form" model="ir.ui.view">
+        <field name="name">promotion.card.view.form</field>
+        <field name="model">promotion.card</field>
+        <field name="arch" type="xml">
+            <form string="Credit Card">
+                <sheet>
+                    <label for="name" string="Name"/>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                             <div class="o_row o_td_label">
+                                <label for="card_code" string="Card code"/>
+                            </div>
+                            <div class="o_row">
+                                <field name="card_code"/>
+                                <field name="res_card_id"/>
+                            </div>
+                            <div class="o_row o_td_label">
+                                <label for="bank_code" string="Bank code"/>
+                            </div>
+                            <div class="o_row">
+                                <field name="bank_code"/>
+                                <field name="res_bank_id"/>
+                            </div>
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                            <field name="percentage"/>
+                        </group>
+                        <group>
+                            <field name="monday"/>
+                            <field name="tuesday"/>
+                            <field name="wednesday"/>
+                            <field name="thurday"/>
+                            <field name="friday"/>
+                            <field name="saturday"/>
+                            <field name="sunday"/>
+                            <field name="all_days"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="branches" string="Branches">
+                            <field name="promotion_ids">
+                                <tree editable="buttom">
+                                    <field name="team_id"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="promotion_card_action" model="ir.actions.act_window">
+        <field name="name">Action Promotion</field>
+        <field name="res_model">promotion.card</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+        
+    <menuitem
+        id="promotion_tarjeta_menu"
+        name="Promotion Cards"
+        action="promotion_card_action"
+        parent="sale_team_analytic.promotion_menu"/>
+
+</odoo>
