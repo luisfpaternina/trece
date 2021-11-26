@@ -6,9 +6,11 @@ class ResTarjeta(models.Model):
     _description = 'model res tarjeta'
 
     name = fields.Char(string='Name')
-    code = fields.Char(string='Code')
+    code = fields.Integer(string='Code')
     type = fields.Selection([
         ('credit', 'Credit'),
         ('debit', 'Dedit')
     ], string='Card Type')
-    
+    shopin = fields.Char(string='Shopin')
+    codglamit = fields.Char(string='Codglamit')
+     

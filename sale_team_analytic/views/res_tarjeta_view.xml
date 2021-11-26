@@ -10,6 +10,8 @@
                     <group name="body">
                         <group>
                             <field name="name"/>
+                            <field name="shopin" />
+                            <field name="codglamit" />
                         </group>
                         <group>
                             <field name="code"/>

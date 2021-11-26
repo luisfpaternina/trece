@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="promotion_card_view_form" model="ir.ui.view">
+        <field name="name">coeficiente.tarjetas.view.tree</field>
+        <field name="model">coeficiente.tarjetas</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="start_date"/>
+                <field name="end_date"/>
+                <field name="bank_code"/>
+                <field name="card_code"/>
+                <field name="card_id"/>
+                <field name="quota"/>
+                <field name="rate"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="rate_card_action" model="ir.actions.act_window">
+        <field name="name">Action coeficiente</field>
+        <field name="res_model">coeficiente.tarjetas</field>
+        <field name="view_mode">tree</field>
+    </record>
+        
+    <menuitem
+        id="rate_tarjeta_menu"
+        name="rate Cards"
+        action="rate_card_action"
+        parent="sale_team_analytic.promotion_menu"/>
+
+</odoo>
