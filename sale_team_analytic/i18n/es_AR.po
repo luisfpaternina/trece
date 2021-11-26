@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 13.0+e\n"
+"Project-Id-Version: Odoo Server 13.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-16 21:29+0000\n"
-"PO-Revision-Date: 2021-11-16 21:29+0000\n"
+"POT-Creation-Date: 2021-11-26 22:35+0000\n"
+"PO-Revision-Date: 2021-11-26 22:35+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -23,7 +23,12 @@ msgstr "Tarjetas"
 #. module: sale_team_analytic
 #: model:ir.actions.act_window,name:sale_team_analytic.promotion_card_action
 msgid "Action Promotion"
-msgstr "Promociones por tarjetas"
+msgstr "Promociones"
+
+#. module: sale_team_analytic
+#: model:ir.actions.act_window,name:sale_team_analytic.rate_card_action
+msgid "Action coeficiente"
+msgstr "Tarjetas Coeficientes"
 
 #. module: sale_team_analytic
 #: model:ir.model.fields,field_description:sale_team_analytic.field_promotion_card__all_days
@@ -33,7 +38,7 @@ msgstr "Todos los dias"
 #. module: sale_team_analytic
 #: model:ir.model.fields,field_description:sale_team_analytic.field_crm_team__analytic_account_id
 msgid "Analytic Account"
-msgstr "Cuenta analitica"
+msgstr "Cuenta Analitica"
 
 #. module: sale_team_analytic
 #: model:ir.model.fields,field_description:sale_team_analytic.field_promotion_card__res_bank_id
@@ -43,12 +48,12 @@ msgstr "Banco"
 #. module: sale_team_analytic
 #: model:ir.model.fields,field_description:sale_team_analytic.field_promotion_card__bank_code
 msgid "Bank Identifier Code"
-msgstr ""
+msgstr "Codigo identificacion Banco"
 
 #. module: sale_team_analytic
 #: model_terms:ir.ui.view,arch_db:sale_team_analytic.promotion_card_view_form
 msgid "Bank code"
-msgstr "Codigo de Banco"
+msgstr "Codigo Banco"
 
 #. module: sale_team_analytic
 #: model_terms:ir.ui.view,arch_db:sale_team_analytic.promotion_card_view_form
@@ -58,12 +63,12 @@ msgstr "Sucursales"
 #. module: sale_team_analytic
 #: model:ir.model.fields,field_description:sale_team_analytic.field_promotion_card_lines__team_id
 msgid "Branches to offer"
-msgstr "Sucursales a mandar promociones"
+msgstr "Sucursales con oferta"
 
 #. module: sale_team_analytic
 #: model:ir.model.fields,field_description:sale_team_analytic.field_promotion_card__res_card_id
 msgid "Card Name"
-msgstr "Nombre de la Tarjeta"
+msgstr "Nombre Tarjeta"
 
 #. module: sale_team_analytic
 #: model:ir.model.fields,field_description:sale_team_analytic.field_res_tarjeta__type
@@ -73,7 +78,7 @@ msgstr "Tipo de Tarjeta"
 #. module: sale_team_analytic
 #: model_terms:ir.ui.view,arch_db:sale_team_analytic.promotion_card_view_form
 msgid "Card code"
-msgstr "Codigo de la Tarjeta"
+msgstr "Codigo Tarjeta"
 
 #. module: sale_team_analytic
 #: model:ir.ui.menu,name:sale_team_analytic.tarjeta_menu
@@ -85,6 +90,16 @@ msgstr "Tarjetas"
 #: model:ir.model.fields,field_description:sale_team_analytic.field_res_tarjeta__code
 msgid "Code"
 msgstr "Codigo"
+
+#. module: sale_team_analytic
+#: model:ir.model.fields,field_description:sale_team_analytic.field_res_tarjeta__codglamit
+msgid "Codglamit"
+msgstr ""
+
+#. module: sale_team_analytic
+#: model:ir.model,name:sale_team_analytic.model_coeficiente_tarjetas
+msgid "Coeficiente Tarjetas"
+msgstr ""
 
 #. module: sale_team_analytic
 #: model:ir.model.fields,field_description:sale_team_analytic.field_promotion_card__create_uid
@@ -119,7 +134,7 @@ msgstr "Debito"
 #. module: sale_team_analytic
 #: model:ir.model.fields,field_description:sale_team_analytic.field_promotion_card__percentage
 msgid "Discount Percentage (%)"
-msgstr "Porcentaje de descuento (%)"
+msgstr "Porcentaje de descuento(%)"
 
 #. module: sale_team_analytic
 #: model:ir.model.fields,field_description:sale_team_analytic.field_promotion_card__display_name
@@ -131,7 +146,7 @@ msgstr ""
 #. module: sale_team_analytic
 #: model:ir.model.fields,field_description:sale_team_analytic.field_promotion_card__end_date
 msgid "End date promotion"
-msgstr "Fecha de finalización de promoción"
+msgstr "Fecha final promocion"
 
 #. module: sale_team_analytic
 #: model:ir.model.fields,field_description:sale_team_analytic.field_promotion_card__friday
@@ -179,30 +194,51 @@ msgid "Name"
 msgstr "Nombre"
 
 #. module: sale_team_analytic
+#: code:addons/sale_team_analytic/models/coeficiente_tarjetas.py:0
+#, python-format
+msgid "Not duplicate with the same range dates, Bank and Card"
+msgstr "No puede crear registros con el mismo rango de fechas,Banco y Tarjeta"
+
+#. module: sale_team_analytic
 #: model:ir.model.fields,field_description:sale_team_analytic.field_promotion_card__promotion_ids
 #: model:ir.ui.menu,name:sale_team_analytic.promotion_menu
 msgid "Promotion"
-msgstr "Promoción"
+msgstr "Promociones"
 
 #. module: sale_team_analytic
 #: model:ir.ui.menu,name:sale_team_analytic.promotion_tarjeta_menu
 msgid "Promotion Cards"
-msgstr "Promoción de Tarjetas"
+msgstr "Promociones de tarjetas"
+
+#. module: sale_team_analytic
+#: model:ir.ui.menu,name:sale_team_analytic.rate_menu
+msgid "Rate"
+msgstr "Coeficiente"
+
+#. module: sale_team_analytic
+#: model:ir.ui.menu,name:sale_team_analytic.rate_card_menu
+msgid "Rate Cards"
+msgstr "Coeficiente de tarjeta"
 
 #. module: sale_team_analytic
 #: model:ir.model,name:sale_team_analytic.model_sale_order
 msgid "Sales Order"
-msgstr "Orden de Venta"
+msgstr "Pedido de venta"
 
 #. module: sale_team_analytic
 #: model:ir.model,name:sale_team_analytic.model_crm_team
 msgid "Sales Team"
-msgstr "Equipo de Ventas"
+msgstr "Equipo de ventas"
 
 #. module: sale_team_analytic
 #: model:ir.model.fields,field_description:sale_team_analytic.field_promotion_card__saturday
 msgid "Saturday"
 msgstr "Sabado"
+
+#. module: sale_team_analytic
+#: model:ir.model.fields,field_description:sale_team_analytic.field_res_tarjeta__shopin
+msgid "Shopin"
+msgstr ""
 
 #. module: sale_team_analytic
 #: model:ir.model.fields,help:sale_team_analytic.field_promotion_card__bank_code
@@ -212,7 +248,7 @@ msgstr ""
 #. module: sale_team_analytic
 #: model:ir.model.fields,field_description:sale_team_analytic.field_promotion_card__start_date
 msgid "Start date promotion"
-msgstr "Fecha de inicio de promoción"
+msgstr "fecha inicio promocion"
 
 #. module: sale_team_analytic
 #: model:ir.model.fields,field_description:sale_team_analytic.field_promotion_card__sunday
@@ -237,24 +273,24 @@ msgstr "Miercoles"
 #. module: sale_team_analytic
 #: model:ir.model.constraint,message:sale_team_analytic.constraint_promotion_card_lines_team_unique
 msgid "You cannot select same branches to offer"
-msgstr "No puede seleccionar la misma sucursal"
+msgstr "No se puede elegir la misma sucursal"
 
 #. module: sale_team_analytic
 #: model:ir.model,name:sale_team_analytic.model_res_tarjeta
 msgid "model res tarjeta"
-msgstr "modelo res tarjeta"
+msgstr ""
 
 #. module: sale_team_analytic
 #: model:ir.model.fields,field_description:sale_team_analytic.field_promotion_card_lines__promotion_id
 msgid "promotion card"
-msgstr "Promociones por tarjeta"
+msgstr "Promocion tarjetas"
 
 #. module: sale_team_analytic
 #: model:ir.model,name:sale_team_analytic.model_promotion_card_lines
 msgid "promotion card lines model"
-msgstr "modelo lineas de la promocion por tarjetas"
+msgstr ""
 
 #. module: sale_team_analytic
 #: model:ir.model,name:sale_team_analytic.model_promotion_card
 msgid "promotion card model"
-msgstr "modelo promocion de tarjetas"
+msgstr ""
