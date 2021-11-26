@@ -7,7 +7,7 @@ class PromotionCard(models.Model):
 
     name = fields.Char(string='',default="Promotion Card Update")
     res_card_id = fields.Many2one('res.tarjeta', string='Card Name')
-    card_code = fields.Char(related="res_card_id.code")
+    card_code = fields.Integer(related="res_card_id.code")
     res_bank_id = fields.Many2one('res.bank', string='Bank')
     bank_code = fields.Char(related="res_bank_id.bic")
     start_date = fields.Date(string='Start date promotion')

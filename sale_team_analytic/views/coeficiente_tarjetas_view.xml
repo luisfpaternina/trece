@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <record id="promotion_card_view_form" model="ir.ui.view">
+    <record id="rate_card_view_tree" model="ir.ui.view">
         <field name="name">coeficiente.tarjetas.view.tree</field>
         <field name="model">coeficiente.tarjetas</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree  editable="top">
                 <field name="start_date"/>
                 <field name="end_date"/>
                 <field name="bank_code"/>
+                <field name="bank_id"/>
                 <field name="card_code"/>
                 <field name="card_id"/>
                 <field name="quota"/>
@@ -20,13 +21,21 @@
     <record id="rate_card_action" model="ir.actions.act_window">
         <field name="name">Action coeficiente</field>
         <field name="res_model">coeficiente.tarjetas</field>
+        <field name="view_id" ref="rate_card_view_tree"/>
         <field name="view_mode">tree</field>
     </record>
         
     <menuitem
-        id="rate_tarjeta_menu"
-        name="rate Cards"
+        id="rate_menu"
+        name="Rate"
+        parent="account.menu_finance_configuration"
+        groups="account.group_account_manager"
+        sequence="27"/>
+        
+    <menuitem
+        id="rate_card_menu"
+        name="Rate Cards"
         action="rate_card_action"
-        parent="sale_team_analytic.promotion_menu"/>
+        parent="sale_team_analytic.rate_menu"/>
 
 </odoo>

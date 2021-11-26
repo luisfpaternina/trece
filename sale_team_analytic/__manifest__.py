@@ -16,6 +16,7 @@
         'security/ir.model.access.csv',
         'views/res_tarjeta_view.xml',
         'views/promotion_card_view.xml',
+        'views/coeficiente_tarjetas_view.xml',
 
     ],
     'auto_install': True,
