@@ -7,3 +7,8 @@
 	path = nybblegroup/bs-lacardeuse-erp-odoo
 	url = git@github.com:nybblegroup/bs-lacardeuse-erp-odoo.git
 	branch = dev
+
+[submodule "OCA/connector"]
+	path = OCA/connector
+	url = git@github.com:OCA/connector.git
+	branch = 13.0
