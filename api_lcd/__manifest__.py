@@ -11,6 +11,7 @@
     ],
     'data': [
     ],
+    "external_dependencies": {"python": ['cryptography'], "bin": []},
     'auto_install': True,
     'application': True,
 }
