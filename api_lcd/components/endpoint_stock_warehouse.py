@@ -3,13 +3,13 @@ from odoo.addons.base_rest import restapi
 import json
 
 
-class CrmTeam(Component):
+class StockWarehouse(Component):
     _inherit = 'base.rest.service'
-    _name = 'crm.team.service'
-    _usage = 'CRM Team'
+    _name = 'stock.warehouse.service'
+    _usage = 'Stock Warehouse'
     _collection = 'contact.services.private.services'
     _description = """
-         API Services to search and create sale order tipo entrega
+         API Services to search stock warehouse
     """
     
     @restapi.method(
@@ -19,11 +19,12 @@ class CrmTeam(Component):
     )
     
     def search(self, id):
-        crm_team = self.env["crm.team"].search([('id','=',id)])
-        if crm_team:
+        stock = self.env["stock.warehouse"].search([('id','=',id)])
+        if stock:
             res = {
                      "id": id,
-                    "name": crm_team.name
+                    "name": stock.name,
+                    "short_name": stock.code,
                   }
         else:
             res = {
@@ -36,6 +37,7 @@ class CrmTeam(Component):
         res = {
                 "id": {"type":"integer", "required": True},
                 "name": {"type":"string", "required": False},
+                "short_name": {"type":"string", "required": False},
                 "message": {"type":"string", "required": False}
               }
         return res

@@ -40,7 +40,7 @@ class SaleOrderZona(Component):
         else:
             res = {
                     "id": id,
-                    "message": "No existe un tipo de entrega con este id"
+                    "message": "No existe una zona con este id"
                   }
         return res
     

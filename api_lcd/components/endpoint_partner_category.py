@@ -20,15 +20,21 @@ class PartnerCategory(Component):
     
     def search(self, _id):
         category = self.env["res.partner.category"].browse(_id)
-        res = {
-                "name": category.name,
-                "id": _id,
-              }
+        if category:
+            res = {
+                    "name": category.name,
+                    "id": _id,
+                  }
+        else:
+            res = {
+                "message": "no hay una categoria de cliente con este id"
+            }
         return res
     
     def _validator_search(self):
         res = {
                 "id": {"type":"integer", "required": True},
                 "name": {"type":"string", "required": True},
+                "message": {"type":"string", "required": False},
               }
         return res

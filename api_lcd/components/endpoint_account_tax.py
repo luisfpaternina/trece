@@ -3,13 +3,13 @@ from odoo.addons.base_rest import restapi
 import json
 
 
-class CrmTeam(Component):
+class AccountTax(Component):
     _inherit = 'base.rest.service'
-    _name = 'crm.team.service'
-    _usage = 'CRM Team'
+    _name = 'account.tax.service'
+    _usage = 'Account Tax'
     _collection = 'contact.services.private.services'
     _description = """
-         API Services to search and create sale order tipo entrega
+         API Services to search account tax
     """
     
     @restapi.method(
@@ -19,16 +19,18 @@ class CrmTeam(Component):
     )
     
     def search(self, id):
-        crm_team = self.env["crm.team"].search([('id','=',id)])
-        if crm_team:
+        tax = self.env["account.tax"].search([('id','=',id)])
+        if tax:
             res = {
                      "id": id,
-                    "name": crm_team.name
+                    "name": tax.name,
+                    "type_tax": tax.type_tax_use,
+                    "amount": tax.amount
                   }
         else:
             res = {
                     "id": id,
-                    "message": "No existe un equipo con este id"
+                    "message": "No existe un impuesto con este id"
                   }
         return res
     
@@ -36,6 +38,8 @@ class CrmTeam(Component):
         res = {
                 "id": {"type":"integer", "required": True},
                 "name": {"type":"string", "required": False},
-                "message": {"type":"string", "required": False}
+                "type_tax": {"type":"string", "required": False},
+                "amount": {"type":"float", "required": False},
+                "message": {"type":"string", "required": False},
               }
         return res
