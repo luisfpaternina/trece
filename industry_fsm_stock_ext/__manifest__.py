@@ -22,7 +22,7 @@
     'data': [
        
         'security/ir.model.access.csv',
-        #'views/product_product_views.xml',
+        'views/product_product_views.xml',
         'wizard/fsm_stock_tracking_views.xml',
              
     ],
