@@ -5,9 +5,11 @@
         <field name="model">project.project</field>
         <field name="inherit_id" ref="sale_timesheet.project_project_view_form"/>
         <field name="arch" type="xml">
+            <!--
             <xpath expr="//field[@name='bill_type']" position="attributes">
                 <attribute name="attrs">{'invisible': [('is_fsm', '=', True)]}</attribute>
             </xpath>
+        -->
             <xpath expr="//field[@name='pricing_type']" position="attributes">
                 <attribute name="attrs">{'invisible': ['|', '|', ('allow_billable', '=', False), ('bill_type', '!=', 'customer_project'), ('is_fsm', '=', True)], 'required': ['&amp;', ('allow_billable', '=', True), ('allow_timesheets', '=', True)]}</attribute>
             </xpath>
