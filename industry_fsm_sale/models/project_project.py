@@ -11,7 +11,7 @@ class Project(models.Model):
     allow_quotations = fields.Boolean(
         "Extra Quotations", compute="_compute_allow_quotations", store=True, readonly=False)
     allow_billable = fields.Boolean(store=True, readonly=False, compute='_compute_allow_billable')
-    bill_type = fields.Selection(compute="_compute_bill_type", store=True, readonly=False)
+    bill_type = fields.Char()
     sale_line_id = fields.Many2one(compute="_compute_sale_line_id", store=True, readonly=False)
 
     _sql_constraints = [
