@@ -2,12 +2,16 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 {
     'name': "Field Service - Sale",
+
     'summary': "Schedule and track onsite operations, invoice time and material",
+
     'description': """
 Create Sales order with timesheets and products from tasks
     """,
     'category': 'Services/Field Service',
+
     'version': '1.0',
+    
     'depends': ['industry_fsm', 'sale_timesheet_enterprise'],
     'qweb': [
         "static/src/xml/fsm_quantity.xml"
