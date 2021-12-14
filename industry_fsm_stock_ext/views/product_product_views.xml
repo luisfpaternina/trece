@@ -9,11 +9,10 @@
             
             <xpath expr="//field[@name='name']" position="after">
                 <field name="fsm_quantity"/>
-                <field name="quantity_decreasable"/>
             </xpath>
 
             <xpath expr="//button[@name='fsm_remove_quantity']" position="attributes">
-                <attribute name="attrs">{'invisible': [('fsm_quantity', '!=', 0), ('quantity_decreasable', '=', False)]}</attribute>
+                <attribute name="attrs">{'invisible': [('fsm_quantity', '!=', 0)]}</attribute>
             </xpath>
 
         </field>
