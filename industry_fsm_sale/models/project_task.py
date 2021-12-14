@@ -145,7 +145,7 @@ class Task(models.Model):
         if not self.partner_id:
             raise UserError(_('A customer should be set on the task to generate a worksheet.'))
 
-        self = self.with_company(self.company_id)
+        #self = self.with_company(self.company_id)
 
         domain = [('sale_ok', '=', True), '|', ('company_id', '=', self.company_id.id), ('company_id', '=', False)]
         if self.project_id and self.project_id.timesheet_product_id:
