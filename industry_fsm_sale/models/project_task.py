@@ -56,8 +56,7 @@ class Task(models.Model):
             task.material_line_product_count = sum(material_sale_lines.mapped('product_uom_qty'))
 
     @api.depends(
-        'is_fsm', 'fsm_done', 'allow_billable', 'timesheet_timer_start',
-        'task_to_invoice', 'invoice_status')
+        'is_fsm', 'fsm_done', 'allow_billable', 'timesheet_timer_start','invoice_status')
     def _compute_display_create_invoice_buttons(self):
         for task in self:
             primary, secondary = True, True
