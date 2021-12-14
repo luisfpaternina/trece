@@ -14,7 +14,6 @@ class Task(models.Model):
     display_create_invoice_primary = fields.Boolean(compute='_compute_display_create_invoice_buttons')
     display_create_invoice_secondary = fields.Boolean(compute='_compute_display_create_invoice_buttons')
     invoice_status = fields.Selection(related='sale_order_id.invoice_status')
-    fsm_done = fields.Boolean()
 
     def action_fsm_validate(self):
         result = super(Task, self).action_fsm_validate()
