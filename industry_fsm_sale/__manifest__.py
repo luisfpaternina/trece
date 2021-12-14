@@ -13,7 +13,7 @@ Create Sales order with timesheets and products from tasks
         "static/src/xml/fsm_quantity.xml"
     ],
     'data': [
-        'data/industry_fsm_data.xml',
+        #'data/industry_fsm_data.xml',
         'security/industry_fsm_sale_security.xml',
         'views/assets.xml',
         'views/project_task_views.xml',
