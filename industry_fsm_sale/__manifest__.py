@@ -12,7 +12,7 @@ Create Sales order with timesheets and products from tasks
 
     'version': '1.0',
     
-    'depends': ['industry_fsm', 'sale_timesheet_enterprise'],
+    'depends': ['industry_fsm', 'sale_timesheet_enterprise','industry_fsm_stock_ext'],
     'qweb': [
         "static/src/xml/fsm_quantity.xml"
     ],
