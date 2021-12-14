@@ -7,10 +7,15 @@
         <field name="inherit_id" ref="industry_fsm.view_product_product_kanban_material"/>
         <field name="arch" type="xml">
             
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="fsm_quantity"/>
+                <field name="quantity_decreasable"/>
+            </xpath>
+
             <xpath expr="//button[@name='fsm_remove_quantity']" position="attributes">
                 <attribute name="attrs">{'invisible': [('fsm_quantity', '!=', 0), ('quantity_decreasable', '=', False)]}</attribute>
             </xpath>
-            
+
         </field>
     </record>
 
