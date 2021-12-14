@@ -9,7 +9,7 @@
             <xpath expr="//field[@name='bill_type']" position="attributes">
                 <attribute name="attrs">{'invisible': [('is_fsm', '=', True)]}</attribute>
             </xpath>
-        -->
+        
             <xpath expr="//field[@name='pricing_type']" position="attributes">
                 <attribute name="attrs">{'invisible': ['|', '|', ('allow_billable', '=', False), ('bill_type', '!=', 'customer_project'), ('is_fsm', '=', True)], 'required': ['&amp;', ('allow_billable', '=', True), ('allow_timesheets', '=', True)]}</attribute>
             </xpath>
@@ -53,8 +53,12 @@
                     </div>
                 </div>
             </xpath>
+             -->
         </field>
+
     </record>
+
+
 
     <record id="project_project_view_form_simplified_inherit" model="ir.ui.view">
         <field name="name">project.project.view.form.simplified.inherit</field>
