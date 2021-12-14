@@ -106,7 +106,7 @@
     <record id="view_task_form2_inherit" model="ir.ui.view">
         <field name="name">view.task.form2.inherit</field>
         <field name="model">project.task</field>
-        <field name="inherit_id" ref="industry_fsm.view_task_form2_inherit"/>
+        <field name="inherit_id" ref="industry_fsm.project_task_view_form"/>
         <field name="arch" type="xml">
             <field name="is_fsm" position="after">
                 <field name="allow_material" invisible="1"/>
