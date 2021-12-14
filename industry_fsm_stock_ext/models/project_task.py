@@ -11,8 +11,8 @@ class Task(models.Model):
     material_line_product_count = fields.Integer(compute='_compute_material_line_totals')
     material_line_total_price = fields.Float(compute='_compute_material_line_totals')
     currency_id = fields.Many2one('res.currency', related='company_id.currency_id', readonly=True)
-    display_create_invoice_primary = fields.Boolean(compute='_compute_display_create_invoice_buttons')
-    display_create_invoice_secondary = fields.Boolean(compute='_compute_display_create_invoice_buttons')
+    display_create_invoice_primary = fields.Boolean()
+    display_create_invoice_secondary = fields.Boolean()
     invoice_status = fields.Selection(related='sale_order_id.invoice_status')
 
     def action_fsm_validate(self):
