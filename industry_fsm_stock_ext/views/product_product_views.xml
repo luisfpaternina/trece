@@ -4,7 +4,7 @@
     <record id="stock_product_product_kanban_material" model="ir.ui.view">
         <field name="name">stock.product.template.kanban.material</field>
         <field name="model">product.product</field>
-        <field name="inherit_id" ref="industry_fsm_sale.view_product_product_kanban_material"/>
+        <field name="inherit_id" ref="industry_fsm.view_product_product_kanban_material"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='name']" position="after">
                 <field name="tracking"/>
