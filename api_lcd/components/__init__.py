@@ -12,3 +12,5 @@ from . import endpoint_res_bank
 from . import endpoint_account_tax
 from . import endpoint_l10n_latam_document_type
 from . import endpoint_stock_picking
+from . import endpoint_account_journal
+from . import endpoint_l10n_ar_afip_responsibility_type

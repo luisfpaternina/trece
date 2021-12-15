@@ -44,10 +44,10 @@ class Contacts(Component):
         res = {
                 "id": person.id,
                 "name": person.name,
-                "numero_identificacion": person.
+                "l10n_latam_identification_type_id": person.
                 l10n_latam_identification_type_id.id,
                 "vat": vat,
-                "responsabilidad_afip": person.
+                "l10n_ar_afip_responsibility_type_id": person.
                 l10n_ar_afip_responsibility_type_id.id or 0,
                 "company_type": person.company_type,
                 "ref": person.ref or '',
@@ -99,17 +99,25 @@ class Contacts(Component):
                     "name": params["name"],
                     "company_type": params["company_type"],
                     "vat": params["vat"],
-                    "ref": params["ref"],
-                    "email": params["email"],
-                    "phone": params["phone"],
-                    "mobile": params["mobile"],
-                    "email": params["email"],
-                    "street": params["direccion"],
-                    "street2": params["direccion_1"],
-                    "city": params["city"],
-                    "state_id": params["state_id"],
-                    "zip": params["zip"],
-                    "country_id": params["country_id"],
+                    "l10n_latam_identification_type_id": params["l10n_latam_identification_type_id"],
+                    "l10n_ar_afip_responsibility_type_id": params["l10n_ar_afip_responsibility_type_id"],
+                    "ref": params["ref"] or "",
+                    "email": params["email"] or "",
+                    "phone": params["phone"] or "",
+                    "mobile": params["mobile"] or "",
+                    "street": params["direccion"] or "",
+                    "street2": params["direccion_1"] or "",
+                    "city": params["city"] or "",
+                    "street_number": params["street_number"] or "",
+                    "street_number_2": params["street_number_2"] or 0,
+                    "state_id": params["state_id"] or 0,
+                    "zip": params["zip"] or "",
+                    "user_id": params["user_id"] or 0,
+                    "team_id": params["team_id"] or 0,
+                    "property_product_pricelist": params["property_product_pricelist"] or 0,
+                    "canal_venta_id": params["canal_venta_id"] or 0,
+                    "tipo_entrega_id": params["tipo_entrega_id"] or 0,
+                    "zona_id": params["zona_id"] or 0
 
                   }
             contact = self.env['res.partner'].create(res)
@@ -118,15 +126,15 @@ class Contacts(Component):
         else:
             res = {"message": "el contacto ya existe con id: {contact}"\
                 .format(contact = contacts.id)}
-        return json.dumps(res)
+        return res
     
     def _validator_search(self):
         res = {
                 "id": {"type":"integer", "required": True, "nullable": False},
                 "name": {"type":"string", "required": True, "nullable": False},
                 "company_type": {"type":"string", "required": True, "nullable": False},
-                "numero_identificacion": {"type":"integer", "required": True},
-                "responsabilidad_afip": {"type":"integer", "required": False},
+                "l10n_latam_identification_type_id": {"type":"integer", "required": True},
+                "l10n_ar_afip_responsibility_type_id": {"type":"integer", "required": False},
                 "vat": {"type":"string", "required": True},
                 "ref": {"type":"string", "required": False},
                 "email": {"type":"string", "required": False},
@@ -187,17 +195,26 @@ class Contacts(Component):
         res = {
                 "name": {"type":"string", "required": True},
                 "company_type": {"type":"string", "required": True},
+                "l10n_latam_identification_type_id": {"type":"integer", "required": True},
+                "l10n_ar_afip_responsibility_type_id": {"type":"integer", "required": False},
                 "vat": {"type":"string", "required": True},
-                "ref": {"type":"string", "required": True},
+                "ref": {"type":"string", "required": False},
                 "email": {"type":"string", "required": True},
-                "phone": {"type":"string", "required": True},
-                "mobile": {"type":"string", "required": True},
-                "email": {"type":"string", "required": True},
+                "phone": {"type":"string", "required": False},
+                "mobile": {"type":"string", "required": False},
                 "direccion": {"type":"string", "required": True},
-                "direccion_1": {"type":"string", "required": True},
+                "direccion_1": {"type":"string", "required": False},
                 "city": {"type":"string", "required": True},
+                "street_number": {"type":"string", "required": True},
+                "street_number_2": {"type":"string", "required": True},
                 "state_id": {"type":"integer", "required": True},
                 "zip": {"type":"string", "required": True},
-                "country_id": {"type":"integer", "required": True}
+                "country_id": {"type":"integer", "required": True},
+                "user_id": {"type":"integer", "required": False},
+                "team_id": {"type":"integer", "required": False},
+                "property_product_pricelist": {"type":"integer", "required": False},
+                "canal_venta_id": {"type":"integer", "required": False},
+                "tipo_entrega_id": {"type":"integer", "required": False},
+                "zona_id": {"type":"integer", "required": False}
               }
         return res

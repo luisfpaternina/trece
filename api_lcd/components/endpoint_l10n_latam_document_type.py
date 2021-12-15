@@ -1,71 +1,59 @@
 from odoo.addons.component.core import Component
 from odoo.addons.base_rest import restapi
-from odoo import fields
 import json
 import logging
 _logger = logging.getLogger(__name__)
 
 
-class CoeficienteTarjetas(Component):
+class l10n_latamDocumentype(Component):
     _inherit = 'base.rest.service'
-    _name = 'coeficiente.tarjetas.service'
-    _usage = 'Coeficiente Tarjetas'
+    _name = 'l10n_latam.document.type.service'
+    _usage = 'Latam Document Type'
     _collection = 'contact.services.private.services'
     _description = """
-         API Services to search and create sale order tipo entrega
+         API Services to search Latam Document Type
     """
     
     @restapi.method(
-        [(["/<string:start_date>/<string:end_date>/<string:bank>/<string:card>/<int:number>/search"], "GET")],
+        [(["/<string:name>/search"], "GET")],
         output_param=restapi.CerberusValidator("_validator_search"),
         auth="public",
     )
     
-    def search(self,start_date,end_date,bank,card,quota):
-        start = fields.Date.to_date(start_date)
-        end = fields.Date.to_date(end_date)
-        number = int(quota)
-        _logger.info(start)
-        _logger.info(end)
-        _logger.info(number)
-        domain = [
-            ('start_date',"=",start),
-            ('end_date',"=",end),
-            ('bank_id.name',"=",bank),
-            ('card_id.name',"=",card),
-            ('quota',"=",number)
-        ]
-        coeficiente_tarjetas = self.env["coeficiente.tarjetas"].search(domain)
-        if coeficiente_tarjetas:
-            res = {
-                     "id": id,
-                    "start_date": coeficiente_tarjetas.start_date,
-                    "end_date": coeficiente_tarjetas.end_date,
-                    "bank_code": coeficiente_tarjetas.bank_id.bic,
-                    "bank": coeficiente_tarjetas.bank_id.name,
-                    "card_code": coeficiente_tarjetas.card_id.code,
-                    "card": coeficiente_tarjetas.card_id.name,
-                    "quota": coeficiente_tarjetas.quota,
-                    "rate": coeficiente_tarjetas.rate
-                  }
+    def search(self, name):
+        _logger.info(name)
+        document_type = self.env["l10n_latam.document.type"].name_search(name)
+        document_type = self.env["l10n_latam.document.type"].browse([i[0] for i in document_type])
+        if document_type:
+            for doc in document_type:
+                res = {
+                        "id": doc.id,
+                        "code": doc.code,
+                        "name": name,
+                        "doc_code_prefix": doc.doc_code_prefix,
+                        "purchase_aliquots": doc.purchase_aliquots,
+                        "report_name": doc.report_name,
+                        "internal_type": doc.report_name,
+                        "country_id": doc.country_id.id,
+                        "country_name": doc.country_id.name,
+                        }
         else:
             res = {
-                    "id": id,
-                    "message": "No existe un coeficiente de tarjeta con este id"
-                  }
+                    "message": "No existe un tipo de documento con este nombre"
+                    }
         return res
     
     def _validator_search(self):
         res = {
                 "id": {"type":"integer", "required": False},
-                "start_date": {"type":"date", "required": True},
-                "end_date": {"type":"date", "required": True},
-                "bank_code": {"type":"string", "required": False},
-                "bank": {"type":"string", "required": True},
-                "card_code": {"type":"integer", "required": False},
-                "card": {"type":"string", "required": True},
+                "code": {"type":"string", "required": False},
+                "name": {"type":"string", "required": False},
                 "message": {"type":"string", "required": False},
-                "quota": {"type":"integer", "required": True},
-                "rate": {"type":"float", "required": False},
+                "doc_code_prefix": {"type":"string", "required": False},
+                "purchase_aliquots": {"type":"string", "required": False},
+                "report_name": {"type":"string", "required": False},
+                "internal_type": {"type":"string", "required": False},
+                "country_id": {"type":"integer", "required": False},
+                "country_name": {"type":"string", "required": False},
               }
         return res

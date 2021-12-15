@@ -11,7 +11,6 @@
     ],
     'data': [
     ],
-    "external_dependencies": {"python": [''], "bin": []},
     'auto_install': True,
     'application': True,
 }
