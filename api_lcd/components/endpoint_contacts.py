@@ -92,6 +92,7 @@ class Contacts(Component):
         return res
     
     def create(self, **params):
+        list = []
         contacts = self.env['res.partner']\
             .search([('vat','=',params['vat'])])
         if not contacts:
@@ -109,7 +110,7 @@ class Contacts(Component):
                     "street2": params["direccion_1"] or "",
                     "city": params["city"] or "",
                     "street_number": params["street_number"] or "",
-                    "street_number_2": params["street_number_2"] or 0,
+                    "street_number2": params["street_number2"] or "",
                     "state_id": params["state_id"] or 0,
                     "zip": params["zip"] or "",
                     "user_id": params["user_id"] or 0,
@@ -118,11 +119,15 @@ class Contacts(Component):
                     "canal_venta_id": params["canal_venta_id"] or 0,
                     "tipo_entrega_id": params["tipo_entrega_id"] or 0,
                     "zona_id": params["zona_id"] or 0
-
                   }
             contact = self.env['res.partner'].create(res)
+            if params["category_id"]:
+                for elements in params["category_id"]:
+                    for value in elements.values():
+                        list.append(value)
+                contact.write({"category_id" : [(6, 0, list)]})
             res["message"] = "se creo el contacto: {contact}"\
-                .format(contact = contact.id)
+                    .format(contact = contact.id)
         else:
             res = {"message": "el contacto ya existe con id: {contact}"\
                 .format(contact = contacts.id)}
@@ -206,7 +211,7 @@ class Contacts(Component):
                 "direccion_1": {"type":"string", "required": False},
                 "city": {"type":"string", "required": True},
                 "street_number": {"type":"string", "required": True},
-                "street_number_2": {"type":"string", "required": True},
+                "street_number2": {"type":"string", "required": True},
                 "state_id": {"type":"integer", "required": True},
                 "zip": {"type":"string", "required": True},
                 "country_id": {"type":"integer", "required": True},
@@ -215,6 +220,13 @@ class Contacts(Component):
                 "property_product_pricelist": {"type":"integer", "required": False},
                 "canal_venta_id": {"type":"integer", "required": False},
                 "tipo_entrega_id": {"type":"integer", "required": False},
-                "zona_id": {"type":"integer", "required": False}
+                "zona_id": {"type":"integer", "required": False},
+                "category_id": {"type":"list",
+                                "schema": {"type": "dict",
+                                        "schema": {
+                                            "category_id": {"type":"integer", "required": False}
+                                                  }
+                                          }
+                               }
               }
         return res
