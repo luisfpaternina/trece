@@ -10,6 +10,7 @@
         'base_rest'
     ],
     'data': [
+        "views/sale_order_view.xml"
     ],
     "external_dependencies": {"python": ['cryptography'], "bin": []},
     'auto_install': True,
