@@ -52,6 +52,8 @@ class SaleOrder(Component):
                         dict["product_id"] = value
                     if key == "product_uom_qty":
                         dict["product_uom_qty"] = value
+                    if key == "entrega_tienda":
+                        dict["entrega_tienda"] = value
                     sale.write({"order_line": [(0,0,dict)]})
         sale.action_confirm()
         sale._create_invoices()
@@ -83,7 +85,8 @@ class SaleOrder(Component):
                                 "schema": {"type": "dict",
                                         "schema": {
                                             "product_id": {"type":"integer", "required": False},
-                                            "product_uom_qty": {"type":"float", "required": False}
+                                            "product_uom_qty": {"type":"float", "required": False},
+                                             "entrega_tienda": {"type":"string", "required": True}
                                                   }
                                           }
                                }

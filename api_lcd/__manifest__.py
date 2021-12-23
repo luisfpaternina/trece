@@ -7,7 +7,8 @@
     'license': 'LGPL-3',
     'category': 'API',
     'depends': [
-        'base_rest'
+        'base_rest',
+        'sale_management'
     ],
     'data': [
         "views/sale_order_view.xml"
