@@ -42,23 +42,17 @@ class SaleOrder(Component):
                 "zona_id": params["zona_id"],
                 "pricelist_id": params["pricelist_id"],
                 "invoice_policy": params["invoice_policy"],
-                "fecha_cierta": fecha,
+                "fecha_cierta": fecha
               }
         sale = self.env['sale.order'].create(res)
         if params["order_lines"]:
             for item in params["order_lines"]:
-                for key, value in item.items():
-                    if key == "product_id":
-                        dict["product_id"] = value
-                    if key == "product_uom_qty":
-                        dict["product_uom_qty"] = value
-                    if key == "entrega_tienda":
-                        dict["entrega_tienda"] = value
-                    sale.write({"order_line": [(0,0,dict)]})
+                sale.write({"order_line": [(0,0,item)]})
         sale.action_confirm()
         sale._create_invoices()
         invoice = self.env["account.move"].search([("invoice_origin","=",sale.name)],limit=1)
-        #invoice.action_post()
+        invoice.write({"journal_id": params["journal_id"]})
+        invoice.action_post()
         res["message"] = "se creo la Factura: {sale}"\
                 .format(sale = invoice.name)
         return res
@@ -81,6 +75,7 @@ class SaleOrder(Component):
                 "pricelist_id": {"type":"integer", "required": False},
                 "invoice_policy": {"type":"string", "required": False},
                 "fecha_cierta": {"type":"string", "required": False},
+                "journal_id": {"type":"integer", "required": False},
                 "order_lines": {"type":"list",
                                 "schema": {"type": "dict",
                                         "schema": {

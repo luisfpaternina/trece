@@ -73,8 +73,8 @@ class ProductProduct(Component):
                     "standard_price": product.standard_price,
                     "unit_measure": [product.uom_id.id,product.uom_id.name],
                     "attributes": att_list,
-                    "list_type": kit.type,
-                    "reference": kit.code,
+                    "list_type": kit.type or "",
+                    "reference": kit.code or "",
                     "components": list
                   }
         else:

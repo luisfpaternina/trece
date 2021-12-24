@@ -15,3 +15,5 @@ from . import endpoint_stock_picking
 from . import endpoint_account_journal
 from . import endpoint_l10n_ar_afip_responsibility_type
 from . import endpoint_sale_order
+from . import endpoint_product_product
+from . import endpoint_product_pricelist
